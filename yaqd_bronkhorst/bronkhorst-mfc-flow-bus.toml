@@ -1,0 +1,17 @@
+protocol = "bronkhorst-mfc-flow-bus"
+doc = ""
+traits = ["is-daemon"]
+
+[links]
+source = "https://github.com/yaq-project/yaqd-bronkhorst"
+bugtracker = "https://github.com/yaq-project/yaqd-bronkhorst/-/issues"
+
+[installation]
+PyPI = "https://pypi.org/project/yaqd-bronkhorst"
+
+[config]
+
+[state]
+
+[messages]
+
