@@ -1,6 +1,6 @@
 __all__ = ["BronkhorstMfcFlowBus"]
 
-import asyncio
+import asyncio  # type: ignore
 from typing import Dict, Any, List
 
 import propar
