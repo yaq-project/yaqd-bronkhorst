@@ -2,6 +2,7 @@ __all__ = ["BronkhorstMfcFlowBus"]
 
 import asyncio
 from typing import Dict, Any, List
+import numpy as np
 
 import propar  # type: ignore
 from yaqd_core import (
