@@ -1,6 +1,6 @@
 protocol = "bronkhorst-mfc-flow-bus"
 doc = ""
-traits = ["is-daemon"]
+traits = ["has-transformed-position", "has-limits", "has-position", "uses-serial", "uses-uart", "is-daemon"]
 
 [links]
 source = "https://github.com/yaq-project/yaqd-bronkhorst"
@@ -9,9 +9,33 @@ bugtracker = "https://github.com/yaq-project/yaqd-bronkhorst/-/issues"
 [installation]
 PyPI = "https://pypi.org/project/yaqd-bronkhorst"
 
+[[types]]
+type = "record"
+name = "calibration_point"
+fields = [{"name"="setpoint", "type"="double"},
+          {"name"="measured", "type"="double"}]
+
 [config]
+
+[config.baud_rate]
+default = 38400
+
+[config.calibration]
+type = {"type"="array", "items"="calibration_point"}
+doc = "Array of calibration points for MFC, in units."
+default = [{"setpoint"=0.0, "measured"=0.0}, {"setpoint"=1000000.0, "measured"=1000000.0}]
 
 [state]
 
 [messages]
 
+[messages.get_temperature]
+response = "double"
+doc = "MFC current temperature."
+
+[fields]
+
+[fields.temperature]
+type = "double"
+getter = "get_temperature"
+kind = "normal"
