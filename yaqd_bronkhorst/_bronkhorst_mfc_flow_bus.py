@@ -13,12 +13,17 @@ from yaqd_core import (
     IsDaemon,
 )
 
-class BronkhorstMfcFlowBus(HasTransformedPosition, HasLimits, HasPosition, UsesUart, UsesSerial, IsDaemon):
+
+class BronkhorstMfcFlowBus(
+    HasTransformedPosition, HasLimits, HasPosition, UsesUart, UsesSerial, IsDaemon
+):
     _kind = "bronkhorst-mfc-flow-bus"
 
     def __init__(self, name, config, config_filepath):
         super().__init__(name, config, config_filepath)
-        self._instrument = propar.instrument(comport=self._config["serial_port"], baudrate=self._config["baud_rate"])
+        self._instrument = propar.instrument(
+            comport=self._config["serial_port"], baudrate=self._config["baud_rate"]
+        )
         if self._instrument.setpoint is not None:
             self._state["destination"] = self._instrument.setpoint
 
