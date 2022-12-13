@@ -1,9 +1,9 @@
 __all__ = ["BronkhorstMfcFlowBus"]
 
-import asyncio  # type: ignore
+import asyncio
 from typing import Dict, Any, List
 
-import propar
+import propar  # type: ignore
 from yaqd_core import (
     HasTransformedPosition,
     HasLimits,
