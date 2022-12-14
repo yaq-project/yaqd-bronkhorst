@@ -29,13 +29,29 @@ default = [{"setpoint"=0.0, "measured"=0.0}, {"setpoint"=1000000.0, "measured"=1
 
 [messages]
 
+[messages.get_fluid_name]
+response = "string"
+doc = "Read fluid name from MFC memory."
+
 [messages.get_temperature]
 response = "double"
 doc = "MFC current temperature."
 
-[fields]
+[messages.get_temperature_units]
+response = "string"
+doc = "Units of temperature returned by get_temperature."
 
-[fields.temperature]
+[properties]
+
+[properties.fluid_name]
+type = "string"
+getter = "get_fluid_name"
+control_kind = "normal"
+record_kind = "metadata"
+
+[properties.temperature]
 type = "double"
 getter = "get_temperature"
-kind = "normal"
+units_getter = "get_temperature_units"
+control_kind = "normal"
+record_kind = "metadata"
