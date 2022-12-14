@@ -1,6 +1,7 @@
 protocol = "bronkhorst-mfc-flow-bus"
 doc = ""
 traits = ["has-transformed-position", "has-limits", "has-position", "uses-serial", "uses-uart", "is-daemon"]
+hardware = ["bronkhorst:el-flow"]
 
 [links]
 source = "https://github.com/yaq-project/yaqd-bronkhorst"
