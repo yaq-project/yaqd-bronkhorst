@@ -15,4 +15,4 @@ This package contains the following daemon(s):
 
 Maintainers:
 
-- This package is currently unmaintained!
+- [Blaise Thompson](https://github.com/untzag)
