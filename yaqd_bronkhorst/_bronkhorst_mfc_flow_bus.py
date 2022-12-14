@@ -27,12 +27,24 @@ class BronkhorstMfcFlowBus(
         )
         if self._instrument.setpoint is not None:
             self._state["destination"] = self._instrument.setpoint
+        if self._config["make"] is None:
+            self.make = "Bronkhorst"
+        if self._config["model"] is None:
+            self.model = self._instrument.readParameter(91)
+        if self._config["serial"] is None:
+            self.serial = self._instrument.readParameter(92)
 
     def direct_serial_write(self, _bytes):
         self._instrument.master.propar.serial.write(_bytes)
 
+    def get_fluid_name(self) -> str:
+        return self._instrument.readParameter(25).strip()
+
     def get_temperature(self) -> float:
         return self._instrument.readParameter(142)
+
+    def get_temperature_units(self) -> str:
+        return "degC"
 
     def _relative_to_transformed(self, relative_position):
         xp = [p["setpoint"] for p in self._config["calibration"]]

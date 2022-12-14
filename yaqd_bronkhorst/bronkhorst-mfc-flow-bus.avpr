@@ -111,13 +111,6 @@
         }
     },
     "doc": "",
-    "fields": {
-        "temperature": {
-            "getter": "get_temperature",
-            "kind": "normal",
-            "type": "double"
-        }
-    },
     "installation": {
         "PyPI": "https://pypi.org/project/yaqd-bronkhorst"
     },
@@ -160,6 +153,11 @@
             "origin": "has-position",
             "request": [],
             "response": "double"
+        },
+        "get_fluid_name": {
+            "doc": "Read fluid name from MFC memory.",
+            "request": [],
+            "response": "string"
         },
         "get_limits": {
             "doc": "Get daemon limits.Limits will be the <a href='https://en.wikipedia.org/wiki/Intersection_(set_theory)'>intersection</a> of config limits and driver limits (when appliciable).",
@@ -222,6 +220,11 @@
             "doc": "MFC current temperature.",
             "request": [],
             "response": "double"
+        },
+        "get_temperature_units": {
+            "doc": "Units of temperature returned by get_temperature.",
+            "request": [],
+            "response": "string"
         },
         "get_units": {
             "doc": "Get units of daemon. These units apply to the position and destination properties.",
@@ -346,6 +349,17 @@
             "type": "double",
             "units_getter": "get_units"
         },
+        "fluid_name": {
+            "control_kind": "normal",
+            "dynamic": true,
+            "getter": "get_fluid_name",
+            "limits_getter": null,
+            "options_getter": null,
+            "record_kind": "metadata",
+            "setter": null,
+            "type": "string",
+            "units_getter": null
+        },
         "native_destination": {
             "control_kind": "normal",
             "dynamic": true,
@@ -389,6 +403,17 @@
             "setter": null,
             "type": "double",
             "units_getter": "get_units"
+        },
+        "temperature": {
+            "control_kind": "normal",
+            "dynamic": true,
+            "getter": "get_temperature",
+            "limits_getter": null,
+            "options_getter": null,
+            "record_kind": "metadata",
+            "setter": null,
+            "type": "double",
+            "units_getter": "get_temperature_units"
         }
     },
     "protocol": "bronkhorst-mfc-flow-bus",
