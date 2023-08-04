@@ -1,0 +1,37 @@
+protocol = "bronkhorst-mfc-flow-bus"
+doc = ""
+traits = ["has-transformed-position", "has-limits", "has-position", "uses-serial", "uses-uart", "is-daemon"]
+hardware = ["bronkhorst:el-flow"]
+
+[links]
+source = "https://github.com/yaq-project/yaqd-bronkhorst"
+bugtracker = "https://github.com/yaq-project/yaqd-bronkhorst/-/issues"
+
+[installation]
+PyPI = "https://pypi.org/project/yaqd-bronkhorst"
+
+[[types]]
+type = "record"
+name = "calibration_point"
+fields = [{"name"="setpoint", "type"="double"},
+          {"name"="measured", "type"="double"}]
+
+[config]
+
+[config.baud_rate]
+default = 38400
+
+[config.calibration]
+type = {"type"="array", "items"="calibration_point"}
+doc = "Array of calibration points for MFC, in units."
+default = [{"setpoint"=0.0, "measured"=0.0}, {"setpoint"=1000000.0, "measured"=1000000.0}]
+
+[config.max_position]
+type = "double"
+doc = "Maximum setpoint of the flow device."
+
+[state]
+
+[messages]
+
+[properties]
