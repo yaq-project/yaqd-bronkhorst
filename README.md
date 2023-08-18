@@ -12,6 +12,7 @@ yaq daemons for Bronkhorst hardware.
 This package contains the following daemon(s):
 
 - https://yaq.fyi/daemons/bronkhorst-mfc-flow-bus
+- https://yaq.fyi/daemons/bronkhorst-mfc-rs232
 
 Maintainers:
 

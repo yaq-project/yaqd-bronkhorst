@@ -19,7 +19,7 @@ from yaqd_core import (
 class BronkhorstMfcRS232(
     HasTransformedPosition, HasLimits, HasPosition, UsesUart, UsesSerial, IsDaemon
 ):
-    _kind = "bronkhorst-mfc-rs-232"
+    _kind = "bronkhorst-mfc-rs232"
 
     def __init__(self, name, config, config_filepath):
         super().__init__(name, config, config_filepath)
@@ -45,11 +45,6 @@ class BronkhorstMfcRS232(
         else:
             position_str = "0000"
         position_str = ":0680010121" + position_str + "\r\n"
-        print(
-            "pos,pos_str,max_pos: {}{}{}".format(
-                position, position_str, self._config["max_position"]
-            )
-        )
         self._ser.write(position_str.encode())
 
     def _transformed_to_relative(self, transformed_position):

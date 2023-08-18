@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+## [2023.8.0]
+
+### Added
+- new daemon: bronkhorst-rs232
+
 ## [2022.12.1]
 
 ### Added

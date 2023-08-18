@@ -133,6 +133,7 @@
     },
     "links": {
         "bugtracker": "https://github.com/yaq-project/yaqd-bronkhorst/-/issues",
+        "example-configs": "https://github.com/yaq-project/yaqd-bronkhorst/tree/main/example-yaq-configs/bronkhorst-mfc-rs232",
         "source": "https://github.com/yaq-project/yaqd-bronkhorst"
     },
     "messages": {
@@ -396,7 +397,7 @@
             "units_getter": "get_units"
         }
     },
-    "protocol": "bronkhorst-mfc-flow-bus",
+    "protocol": "bronkhorst-mfc-rs232",
     "requires": [],
     "state": {
         "destination": {
