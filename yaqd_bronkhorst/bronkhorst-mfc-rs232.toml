@@ -1,4 +1,4 @@
-protocol = "bronkhorst-mfc-flow-bus"
+protocol = "bronkhorst-mfc-rs232"
 doc = ""
 traits = ["has-transformed-position", "has-limits", "has-position", "uses-serial", "uses-uart", "is-daemon"]
 hardware = ["bronkhorst:el-flow"]

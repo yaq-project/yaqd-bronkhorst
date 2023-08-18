@@ -32,7 +32,7 @@ dev = ["black", "pre-commit"]
 
 [tool.flit.scripts]
 yaqd-bronkhorst-mfc-flow-bus = "yaqd_bronkhorst._bronkhorst_mfc_flow_bus:BronkhorstMfcFlowBus.main"
-yaqd-bronkhorst-mfc-rs-232 = "yaqd_bronkhorst._bronkhorst_mfc_rs_232:BronkhorstMfcRS232.main"
+yaqd-bronkhorst-mfc-rs232 = "yaqd_bronkhorst._bronkhorst_mfc_rs232:BronkhorstMfcRS232.main"
 
 
 [tool.black]

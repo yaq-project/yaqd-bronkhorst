@@ -19,7 +19,7 @@ from yaqd_core import (
 class BronkhorstMfcRS232(
     HasTransformedPosition, HasLimits, HasPosition, UsesUart, UsesSerial, IsDaemon
 ):
-    _kind = "bronkhorst-mfc-rs-232"
+    _kind = "bronkhorst-mfc-rs232"
 
     def __init__(self, name, config, config_filepath):
         super().__init__(name, config, config_filepath)
