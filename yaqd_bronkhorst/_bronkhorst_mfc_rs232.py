@@ -45,11 +45,6 @@ class BronkhorstMfcRS232(
         else:
             position_str = "0000"
         position_str = ":0680010121" + position_str + "\r\n"
-        print(
-            "pos,pos_str,max_pos: {}{}{}".format(
-                position, position_str, self._config["max_position"]
-            )
-        )
         self._ser.write(position_str.encode())
 
     def _transformed_to_relative(self, transformed_position):
