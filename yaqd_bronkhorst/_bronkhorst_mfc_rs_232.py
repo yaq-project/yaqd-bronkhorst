@@ -3,7 +3,7 @@ __all__ = ["BronkhorstMfcRS232"]
 import asyncio
 from typing import Dict, Any, List
 import numpy as np
-import serial
+import serial  # type: ignore
 
 
 from yaqd_core import (
