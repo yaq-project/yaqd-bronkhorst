@@ -6,6 +6,7 @@ hardware = ["bronkhorst:el-flow"]
 [links]
 source = "https://github.com/yaq-project/yaqd-bronkhorst"
 bugtracker = "https://github.com/yaq-project/yaqd-bronkhorst/-/issues"
+example-configs = "https://github.com/yaq-project/yaqd-bronkhorst/tree/main/example-yaq-configs/bronkhorst-mfc-rs232"
 
 [installation]
 PyPI = "https://pypi.org/project/yaqd-bronkhorst"
