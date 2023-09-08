@@ -23,7 +23,7 @@ class BronkhorstMfcRS232(
     _kind = "bronkhorst-mfc-rs-232"
 
     def __init__(self, name, config, config_filepath):
-        print("helo")
+
         super().__init__(name, config, config_filepath)
         self._ser = serial.Serial(self._config["serial_port"], baudrate=self._config["baud_rate"],timeout=0.5)
         if self._config["make"] is None:
