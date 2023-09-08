@@ -3,8 +3,7 @@ __all__ = ["BronkhorstMfcRS232"]
 import asyncio
 from typing import Dict, Any, List
 import numpy as np
-import serial
-
+import serial  # type: ignore
 
 
 from yaqd_core import (
@@ -25,7 +24,9 @@ class BronkhorstMfcRS232(
     def __init__(self, name, config, config_filepath):
 
         super().__init__(name, config, config_filepath)
-        self._ser = serial.Serial(self._config["serial_port"], baudrate=self._config["baud_rate"],timeout=0.5)
+        self._ser = serial.Serial(
+            self._config["serial_port"], baudrate=self._config["baud_rate"], timeout=0.5
+        )
         if self._config["make"] is None:
             self.make = "Bronkhorst"
 
@@ -40,12 +41,16 @@ class BronkhorstMfcRS232(
 
     def _set_position(self, position):
         if position > 0:
-            position_str = (position/ float(self._config["max_position"])) * 32000
+            position_str = (position / float(self._config["max_position"])) * 32000
             position_str = hex(int(position_str))[2:]
         else:
-            position_str = '0000'
-        position_str = ':0680010121'+position_str+'\r\n'
-        print("pos,pos_str,max_pos: {}{}{}".format(position,position_str,self._config["max_position"]))
+            position_str = "0000"
+        position_str = ":0680010121" + position_str + "\r\n"
+        print(
+            "pos,pos_str,max_pos: {}{}{}".format(
+                position, position_str, self._config["max_position"]
+            )
+        )
         self._ser.write(position_str.encode())
 
     def _transformed_to_relative(self, transformed_position):
@@ -55,15 +60,16 @@ class BronkhorstMfcRS232(
 
     async def update_state(self):
         while True:
-
             read_code = ":06800401210120\r\n"
             self._ser.write(read_code.encode())
             await asyncio.sleep(0.25)
             val = self._ser.readline()
 
-            val = val.decode().rstrip()[-4:]#Gets last 4 hex digits
-            num = int(val, 16) #Converts to decimal
-            position = (float(num)/ 32000) * float(self._config["max_position"]) #Determines actual flow
+            val = val.decode().rstrip()[-4:]  # Gets last 4 hex digits
+            num = int(val, 16)  # Converts to decimal
+            position = (float(num) / 32000) * float(
+                self._config["max_position"]
+            )  # Determines actual flow
 
             self._state["position"] = position
             if abs(self._state["position"] - self._state["destination"]) < 1.0:
