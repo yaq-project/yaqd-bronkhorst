@@ -34,6 +34,8 @@ class BronkhorstMfcFlowBus(
         if self._config["serial"] is None:
             self.serial = self._instrument.readParameter(92)
 
+        self._capacity = self._instrument.readParameter(21)
+
     def direct_serial_write(self, _bytes):
         self._instrument.master.propar.serial.write(_bytes)
 
@@ -53,7 +55,8 @@ class BronkhorstMfcFlowBus(
         return out
 
     def _set_position(self, position):
-        self._instrument.setpoint = position
+
+        self._instrument.setpoint = int((position / self._capacity)*32000)  #scaled % of max range x 32000
 
     def _transformed_to_relative(self, transformed_position):
         xp = [p["measured"] for p in self._config["calibration"]]
@@ -62,7 +65,7 @@ class BronkhorstMfcFlowBus(
 
     async def update_state(self):
         while True:
-            self._state["position"] = self._instrument.measure
+            self._state["position"] = (self._instrument.measure/32000) * self._capacity
             if abs(self._state["position"] - self._state["destination"]) < 1.0:
                 self._busy = False
             await asyncio.sleep(0.25)
